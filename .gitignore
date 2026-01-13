@@ -11,7 +11,7 @@
 !/main.py
 !/requirements.txt
 !/email_sender/mail.py
-
+!/AI_Process_Text/minimax.py
 # 如果你希望跟踪 email_sender/config.py，请取消下面一行的注释：
 # !/email_sender/config.py
 
