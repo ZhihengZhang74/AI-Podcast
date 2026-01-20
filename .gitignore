@@ -1,25 +1,24 @@
-# 忽略所有文件（白名单策略）
+# 白名单策略：忽略所有文件，只跟踪指定文件
 *
 
-# 取消对目录的忽略，便于使用白名单恢复特定文件
+# 重新包含目录
 !*/
 
-# 保持 .gitignore 被跟踪
-!/.gitignore
-
-# 允许特定文件（按需修改）
-!/main.py
+# 核心文件
 !/requirements.txt
-!/email_sender/mail.py
-!/AI_Process_Text/minimax.py
-# 如果你希望跟踪 email_sender/config.py，请取消下面一行的注释：
-# !/email_sender/config.py
 
-# 额外建议：仍然排除常见的临时文件
+# 邮件模块
+!/email_sender/mail.py
+# !/email_sender/config.py  # 包含敏感信息，不跟踪
+
+# 忽略系统文件
 .DS_Store
 __pycache__/
 *.pyc
+*.pyc
 venv/
-env/
 .vscode/
 .idea/
+
+# 忽略环境变量文件
+.env

@@ -4,11 +4,16 @@
 
 import smtplib
 from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-from .config import EMAIL_CONFIG
+import sys
+import os
+
+# 添加上级目录到路径，以便在直接运行时能够导入 config
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from email_sender.config import EMAIL_CONFIG
 
 
-def send_email(to_email: str, subject: str, body: str, is_html: bool = False) -> bool:
+def send_email(to_email: str, subject: str, body: str) -> bool:
     """
     发送邮件
 
@@ -16,7 +21,6 @@ def send_email(to_email: str, subject: str, body: str, is_html: bool = False) ->
         to_email: 收件人邮箱
         subject: 邮件主题
         body: 邮件内容
-        is_html: 是否为HTML格式
 
     返回:
         bool: 发送是否成功
@@ -34,13 +38,8 @@ def send_email(to_email: str, subject: str, body: str, is_html: bool = False) ->
         smtp.login(sender, password)
         print("正在发送邮件...")
 
-        # 构建邮件
-        if is_html:
-            msg = MIMEMultipart()
-            msg.attach(MIMEText(body, 'html', 'utf-8'))
-        else:
-            msg = MIMEText(body, 'plain', 'utf-8')
-
+        # 构建邮件（仅支持纯文本）
+        msg = MIMEText(body, 'plain', 'utf-8')
         msg['From'] = sender
         msg['To'] = to_email
         msg['Subject'] = subject

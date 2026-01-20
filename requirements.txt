@@ -1,9 +1,5 @@
-# 邮件发送程序依赖
-# Python 3 已内置 smtplib 和 email 库，无需安装额外依赖
+## 项目核心依赖
 
-# 如需使用虚拟环境，可以用以下命令创建：
-# python -m venv venv
-# source venv/bin/activate  # macOS/Linux
-# venv\Scripts\activate     # Windows
+# 邮件发送模块
+python-dotenv>=1.0.0
 
-# 本程序不需要任何第三方库
